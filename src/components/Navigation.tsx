@@ -18,6 +18,8 @@ const Navigation = () => {
   ]
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       
@@ -40,9 +42,10 @@ const Navigation = () => {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [sections])
 
   const scrollToSection = (sectionId: string) => {
+    if (typeof window === 'undefined') return
     const element = document.getElementById(sectionId)
     if (element) {
       // Add offset to prevent header overlap

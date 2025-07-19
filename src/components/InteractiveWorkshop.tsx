@@ -136,6 +136,7 @@ print("Predicted price: $" + str(prediction))`,
   ]
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
     const interval = setInterval(() => {
       setParticipantCount(prev => Math.max(15, prev + Math.floor(Math.random() * 3) - 1))
     }, 5000)
@@ -166,7 +167,9 @@ print("Predicted price: $" + str(prediction))`,
   }
 
   const runCode = () => {
-    alert('Code execution would happen here! In a real workshop, this would run your code safely.')
+    if (typeof window !== 'undefined') {
+      alert('Code execution would happen here! In a real workshop, this would run your code safely.')
+    }
   }
 
   return (

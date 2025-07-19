@@ -5,9 +5,12 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Peer learning workshop machine learning',
-  description: 'A comprehensive peer learning workshop for students exploring machine learning foundations and collaborative learning approaches',
+  title: 'Tech Guide - Interactive Workshop',
+  description: 'Interactive workshop presentation for tech students exploring AI/ML and career foundations',
 }
+
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic'
 
 export default function RootLayout({
   children,

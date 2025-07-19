@@ -9,6 +9,10 @@ import Conclusion from '@/components/Conclusion'
 import { SpeakerModeToggle } from '@/components/SpeakerNotes'
 import AudienceEngagement from '@/components/AudienceEngagement'
 import InteractiveWorkshop from '@/components/InteractiveWorkshop'
+import ClientOnly from '@/components/ClientOnly'
+
+// Force dynamic rendering to avoid SSR issues
+export const dynamic = 'force-dynamic'
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState('hero')
@@ -19,6 +23,8 @@ export default function Home() {
 
   // Keyboard navigation for presentation
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
         e.preventDefault()
@@ -50,6 +56,8 @@ export default function Home() {
 
   // Scroll progress tracking
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const handleScroll = () => {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
@@ -64,12 +72,14 @@ export default function Home() {
   const sections = ['hero', 'tech-domains', 'ai-deep-dive', 'conclusion']
   
   const scrollToNextSection = () => {
+    if (typeof window === 'undefined') return
     const currentIndex = sections.indexOf(currentSection)
     const nextIndex = Math.min(currentIndex + 1, sections.length - 1)
     document.getElementById(sections[nextIndex])?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const scrollToPrevSection = () => {
+    if (typeof window === 'undefined') return
     const currentIndex = sections.indexOf(currentSection)
     const prevIndex = Math.max(currentIndex - 1, 0)
     document.getElementById(sections[prevIndex])?.scrollIntoView({ behavior: 'smooth' })
@@ -90,10 +100,14 @@ export default function Home() {
       <SpeakerModeToggle />
       
       {/* Audience Engagement */}
-      {showEngagement && <AudienceEngagement />}
+      <ClientOnly>
+        {showEngagement && <AudienceEngagement />}
+      </ClientOnly>
       
       {/* Interactive Workshop */}
-      {showInteractiveWorkshop && <InteractiveWorkshop />}
+      <ClientOnly>
+        {showInteractiveWorkshop && <InteractiveWorkshop />}
+      </ClientOnly>
       
       {/* Enhanced Keyboard Shortcuts Help */}
       {keyboardShortcuts && (
@@ -180,47 +194,51 @@ export default function Home() {
       )}
       
       {/* Enhanced Presentation Progress Indicator */}
-      <div className="fixed bottom-0 left-0 right-0 h-2 bg-gray-200/50 backdrop-blur-sm z-30">
-        <div 
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 transition-all duration-500 ease-out shadow-lg"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
+      <ClientOnly>
+        <div className="fixed bottom-0 left-0 right-0 h-2 bg-gray-200/50 backdrop-blur-sm z-30">
+          <div 
+            className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 transition-all duration-500 ease-out shadow-lg"
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
+      </ClientOnly>
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
-        <button
-          onClick={() => setShowInteractiveWorkshop(!showInteractiveWorkshop)}
-          className={`p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
-            showInteractiveWorkshop 
-              ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white' 
-              : 'glass text-gray-700 hover:text-purple-600'
-          }`}
-          title="Interactive Workshop"
-        >
-          <span className="text-2xl">🚀</span>
-        </button>
-        
-        <button
-          onClick={() => setShowEngagement(!showEngagement)}
-          className={`p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
-            showEngagement 
-              ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white' 
-              : 'glass text-gray-700 hover:text-blue-600'
-          }`}
-          title="Audience Engagement"
-        >
-          <span className="text-2xl">🎯</span>
-        </button>
-        
-        <button
-          onClick={() => setKeyboardShortcuts(true)}
-          className="p-4 rounded-full glass shadow-2xl transition-all duration-300 hover:scale-110 text-gray-700 hover:text-blue-600"
-          title="Keyboard Shortcuts"
-        >
-          <span className="text-2xl">⌨️</span>
-        </button>
-      </div>
+      <ClientOnly>
+        <div className="fixed bottom-6 right-6 flex flex-col space-y-3 z-40">
+          <button
+            onClick={() => setShowInteractiveWorkshop(!showInteractiveWorkshop)}
+            className={`p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
+              showInteractiveWorkshop 
+                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white' 
+                : 'glass text-gray-700 hover:text-purple-600'
+            }`}
+            title="Interactive Workshop"
+          >
+            <span className="text-2xl">🚀</span>
+          </button>
+          
+          <button
+            onClick={() => setShowEngagement(!showEngagement)}
+            className={`p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
+              showEngagement 
+                ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white' 
+                : 'glass text-gray-700 hover:text-blue-600'
+            }`}
+            title="Audience Engagement"
+          >
+            <span className="text-2xl">🎯</span>
+          </button>
+          
+          <button
+            onClick={() => setKeyboardShortcuts(true)}
+            className="p-4 rounded-full glass shadow-2xl transition-all duration-300 hover:scale-110 text-gray-700 hover:text-blue-600"
+            title="Keyboard Shortcuts"
+          >
+            <span className="text-2xl">⌨️</span>
+          </button>
+        </div>
+      </ClientOnly>
     </div>
   )
 }
