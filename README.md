@@ -1,6 +1,6 @@
-# Tech Career Workshop Presentation
+# Machine Learning Workshop Presentation
 
-An interactive, speaker-optimized presentation for the workshop "Exploring Technology and Career Foundations: A Guide for Tech Students." Built specifically for workshop delivery with presenter controls and audience engagement features.
+An interactive, speaker-optimized presentation for the workshop "One day Hands-on workshop on Machine Learning at CHANDIGARH UNIVERSITY." Built specifically for workshop delivery with presenter controls and audience engagement features.
 
 ## � Workshop Features (NEW!)
 

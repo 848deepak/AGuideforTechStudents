@@ -255,10 +255,26 @@ const AIMLSection = () => {
             <h3 className="text-3xl font-bold mb-4 gradient-text">
               How Neural Networks Process Information
             </h3>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Watch how AI models process tasks step-by-step, transforming raw input data through multiple layers 
-              of interconnected neurons to produce intelligent outputs.
+              of interconnected neurons to produce intelligent outputs. This interactive demo shows the real-time flow of information.
             </p>
+            
+            {/* Add status indicators */}
+            <div className="flex justify-center items-center gap-6 mt-6">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-sm text-gray-600 font-medium">Live Processing</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+                <span className="text-sm text-gray-600 font-medium">Real-time Visualization</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse delay-700"></div>
+                <span className="text-sm text-gray-600 font-medium">Interactive Demo</span>
+              </div>
+            </div>
           </div>
           
           {/* Enhanced Neural Network Demo with Prominent Output */}
@@ -581,9 +597,10 @@ const AIMLSection = () => {
 
         {/* ML Workflow */}
         <div className="mb-16">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">
-              The Machine Learning Project Lifecycle
+          <div className="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 rounded-2xl shadow-xl p-8 border-2 border-indigo-200 hover:border-indigo-300 transition-all duration-300 hover:shadow-2xl">
+            <h3 className="text-3xl font-bold text-center mb-2 gradient-text flex items-center justify-center gap-3">
+              🔄 The Machine Learning Project Lifecycle
+              <span className="px-3 py-1 bg-indigo-200 text-indigo-700 text-sm rounded-full">Step-by-Step Guide</span>
             </h3>
             <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
               Most successful ML projects follow this systematic 7-step process. Think of it as a recipe for turning data into insights.
@@ -641,15 +658,18 @@ const AIMLSection = () => {
                   color: 'from-indigo-500 to-purple-500'
                 }
               ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
+                <div key={index} className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100 hover:border-gray-200">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 shadow-lg transform hover:scale-110 transition-transform duration-300`}>
                     {item.step}
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h4>
-                    <p className="text-gray-600 mb-2">{item.description}</p>
-                    <div className="bg-gray-50 p-3 rounded-lg">
-                      <span className="text-sm text-gray-700"><strong>Example:</strong> {item.example}</span>
+                    <h4 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                      {item.title}
+                      <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">Step {item.step}</span>
+                    </h4>
+                    <p className="text-gray-600 mb-3">{item.description}</p>
+                    <div className="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg border-l-4 border-blue-400">
+                      <span className="text-sm text-gray-700">💡 <strong>Example:</strong> {item.example}</span>
                     </div>
                   </div>
                 </div>
@@ -660,24 +680,35 @@ const AIMLSection = () => {
 
         {/* Popular Algorithms */}
         <div className="mb-16">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h3 className="text-3xl font-bold text-center mb-8 gradient-text">
-              Popular ML Algorithms: Your First Toolkit
-            </h3>
+          <div className="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full -mr-16 -mt-16 opacity-30"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-green-100 to-yellow-100 rounded-full -ml-12 -mb-12 opacity-30"></div>
             
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold text-center mb-4 gradient-text">
+                Popular ML Algorithms: Your First Toolkit
+              </h3>
+              <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+                Master these fundamental algorithms to start your machine learning journey. Each algorithm has its unique strengths and use cases.
+              </p>
+            
+              <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
                 <div 
-                  className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl cursor-pointer card-hover"
+                  className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl cursor-pointer card-hover border-2 border-transparent hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                   onClick={() => toggleSection('linear-regression')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-blue-800">📈 Linear Regression</h4>
+                      <h4 className="text-xl font-bold text-blue-800 flex items-center gap-2">
+                        📈 Linear Regression
+                        <span className="px-2 py-1 bg-blue-200 text-blue-700 text-xs rounded-full font-normal">Beginner</span>
+                      </h4>
                       <p className="text-blue-600 text-sm">Predicting continuous numerical values</p>
                     </div>
-                    <div className="text-blue-600">
-                      {expandedSection === 'linear-regression' ? '▼' : '▶'}
+                    <div className="text-blue-600 text-xl transform transition-transform duration-300 hover:scale-110">
+                      {expandedSection === 'linear-regression' ? '🔽' : '▶️'}
                     </div>
                   </div>
                   {expandedSection === 'linear-regression' && (
@@ -696,16 +727,19 @@ const AIMLSection = () => {
                 </div>
 
                 <div 
-                  className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl cursor-pointer card-hover"
+                  className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl cursor-pointer card-hover border-2 border-transparent hover:border-green-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                   onClick={() => toggleSection('logistic-regression')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-green-800">🎯 Logistic Regression</h4>
+                      <h4 className="text-xl font-bold text-green-800 flex items-center gap-2">
+                        🎯 Logistic Regression
+                        <span className="px-2 py-1 bg-green-200 text-green-700 text-xs rounded-full font-normal">Beginner</span>
+                      </h4>
                       <p className="text-green-600 text-sm">Binary classification for yes/no decisions</p>
                     </div>
-                    <div className="text-green-600">
-                      {expandedSection === 'logistic-regression' ? '▼' : '▶'}
+                    <div className="text-green-600 text-xl transform transition-transform duration-300 hover:scale-110">
+                      {expandedSection === 'logistic-regression' ? '🔽' : '▶️'}
                     </div>
                   </div>
                   {expandedSection === 'logistic-regression' && (
@@ -724,16 +758,19 @@ const AIMLSection = () => {
                 </div>
 
                 <div 
-                  className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl cursor-pointer card-hover"
+                  className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl cursor-pointer card-hover border-2 border-transparent hover:border-purple-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                   onClick={() => toggleSection('decision-trees')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-yellow-800">🌳 Decision Trees</h4>
-                      <p className="text-yellow-600 text-sm">Easy-to-understand decision-making process</p>
+                      <h4 className="text-xl font-bold text-purple-800 flex items-center gap-2">
+                        🌳 Decision Trees
+                        <span className="px-2 py-1 bg-purple-200 text-purple-700 text-xs rounded-full font-normal">Beginner</span>
+                      </h4>
+                      <p className="text-purple-600 text-sm">Tree-based decision making algorithm</p>
                     </div>
-                    <div className="text-yellow-600">
-                      {expandedSection === 'decision-trees' ? '▼' : '▶'}
+                    <div className="text-purple-600 text-xl transform transition-transform duration-300 hover:scale-110">
+                      {expandedSection === 'decision-trees' ? '🔽' : '▶️'}
                     </div>
                   </div>
                   {expandedSection === 'decision-trees' && (
@@ -752,16 +789,19 @@ const AIMLSection = () => {
                 </div>
 
                 <div 
-                  className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl cursor-pointer card-hover"
+                  className="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl cursor-pointer card-hover border-2 border-transparent hover:border-red-300 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                   onClick={() => toggleSection('neural-networks')}
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="text-xl font-bold text-purple-800">🧠 Neural Networks</h4>
-                      <p className="text-purple-600 text-sm">Brain-inspired learning systems</p>
+                      <h4 className="text-xl font-bold text-red-800 flex items-center gap-2">
+                        🧠 Neural Networks
+                        <span className="px-2 py-1 bg-red-200 text-red-700 text-xs rounded-full font-normal">Advanced</span>
+                      </h4>
+                      <p className="text-red-600 text-sm">Brain-inspired learning algorithms</p>
                     </div>
-                    <div className="text-purple-600">
-                      {expandedSection === 'neural-networks' ? '▼' : '▶'}
+                    <div className="text-red-600 text-xl transform transition-transform duration-300 hover:scale-110">
+                      {expandedSection === 'neural-networks' ? '🔽' : '▶️'}
                     </div>
                   </div>
                   {expandedSection === 'neural-networks' && (
@@ -823,6 +863,7 @@ const AIMLSection = () => {
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                       <span>Build projects to showcase your skills</span>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>

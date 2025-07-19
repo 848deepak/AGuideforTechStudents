@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Exploring Technology and Career Foundations',
-  description: 'A comprehensive guide for tech students exploring career foundations in technology and AI/ML',
+  title: 'One day Hands-on workshop on Machine Learning at CHANDIGARH UNIVERSITY',
+  description: 'A comprehensive hands-on workshop for students exploring machine learning foundations and practical applications at Chandigarh University',
 }
 
 export default function RootLayout({
