@@ -415,6 +415,8 @@ const NeuralNetworkAnimation = () => {
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
       </div>
 
       {/* Process Steps */}

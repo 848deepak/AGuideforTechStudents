@@ -160,7 +160,7 @@ export default function Home() {
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Use Space bar for smooth progression</li>
                     <li>• Press E to engage audience with polls</li>
-                    <li>• Press I for interactive coding & quizzes</li>
+                                          <li>• Press I for interactive coding &amp; quizzes</li>
                     <li>• Presenter mode shows speaker notes</li>
                   </ul>
                 </div>
@@ -172,7 +172,7 @@ export default function Home() {
                 onClick={() => setKeyboardShortcuts(false)}
                 className="btn-primary px-8 py-3"
               >
-                Got it! Let's continue
+                Got it! Let&apos;s continue
               </button>
             </div>
           </div>

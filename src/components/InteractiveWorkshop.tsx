@@ -517,7 +517,7 @@ print("Predicted price: $" + str(prediction))`,
 
                     <div className="glass rounded-xl p-3 border-l-4 border-blue-500">
                       <h5 className="font-semibold text-sm">Code Review Session</h5>
-                      <p className="text-xs text-gray-600 mb-2">Review and improve each other's ML models</p>
+                      <p className="text-xs text-gray-600 mb-2">Review and improve each other&apos;s ML models</p>
                       <div className="flex items-center space-x-2">
                         <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Starting Soon</span>
                         <span className="text-xs text-gray-500">10 min</span>
