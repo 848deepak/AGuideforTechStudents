@@ -1,6 +1,6 @@
-# Machine Learning Workshop Presentation
+# Peer Learning Machine Learning Workshop Presentation
 
-An interactive, speaker-optimized presentation for the workshop "One day Hands-on workshop on Machine Learning at CHANDIGARH UNIVERSITY." Built specifically for workshop delivery with presenter controls and audience engagement features.
+An interactive, speaker-optimized presentation for the workshop "Peer learning workshop machine learning." Built specifically for workshop delivery with presenter controls and audience engagement features.
 
 ## � Workshop Features (NEW!)
 

@@ -43,12 +43,12 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           <div className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              <span className="gradient-text">One day Hands-on workshop</span>
+              <span className="gradient-text">Peer learning workshop</span>
               <br />
-              <span className="text-gray-800">on Machine Learning</span>
+              <span className="text-gray-800">machine learning</span>
               <br />
               <span className="text-2xl md:text-3xl font-normal text-gray-600 mt-4 block">
-                at CHANDIGARH UNIVERSITY
+                Collaborative Learning Experience
               </span>
             </h1>
 
